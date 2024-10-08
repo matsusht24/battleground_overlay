@@ -15,6 +15,11 @@ def comp_parser():
         print(f"Failed to retrieve the webpage: {response.status_code}")
 
     soup = BeautifulSoup(html_content, 'html.parser')
+    comps_elems = soup.find_all(class_="pt-cv-title")
+
+    comps = [(a['href'], a.get_text()) for element in comps_elems for a in element.find_all('a')]
+    
+
 
 def hero_parser():
     data = pd.read_csv('data/hero_tierlist.csv', dtype=str)
@@ -23,7 +28,8 @@ def hero_parser():
     
 
 def main():
-    hero_dict = hero_parser()
-    print(hero_dict)
+    #hero_dict = hero_parser()
+    comp_parser()
+
 
 main()
