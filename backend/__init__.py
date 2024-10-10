@@ -16,12 +16,16 @@ def comp_creator(comp, writer):
         print(f"Failed to retrieve the webpage: {response.status_code}")
 
     soup = BeautifulSoup(html_content, 'html.parser')
-    temp = soup.find('strong')
-    test = soup.find_next_sibling("strong")
+    #when_to_commit = soup.find('strong').find_parent().find_next_sibling().text
+    test = soup.find_all('strong')
+    when_to_commit = test[0].find_parent().find_next_sibling()
+    enabelers = test[1].find_parent().find_next_sibling()
+    when_to_commit = '' if when_to_commit == None else when_to_commit.text
+    enabelers = '' if enabelers == None else enabelers.text
     
-    #Note: For next time try to figure out how to get the enablers, add ons, cores, and when to commit from page. 
-    print(temp)
-
+    writer.writerow([comp_name,enabelers, when_to_commit])
+    #core and add ons will be harder to do as the images don't have a good label on them
+    
 def comp_parser():
     comps_url = "https://hsbgguide.com/comps/"
     response = requests.get(comps_url)
@@ -43,7 +47,7 @@ def comp_parser():
 
     # open/creates the csv file that will store the data on the comps for now
     try:
-        file = open(file_name, mode='a+', newline='')
+        file = open(file_name, mode='a+', newline='\n')
         writer = csv.writer(file)
         if not file_exists:
             writer.writerow(['comp_name','enablers','when_to_commit','core','add-ons'])
@@ -56,7 +60,10 @@ def comp_parser():
     
     for comp in comp_list:
         comp_creator(comp, writer)
-        return
+
+    file.close()
+
+   
         
     
 
@@ -68,8 +75,8 @@ def hero_parser():
     
 
 def main():
-    #hero_dict = hero_parser()
-    comp_parser()
-
+    #hero_parser()
+    #comp_parser()
+    print("for testing")
 
 main()
