@@ -3,6 +3,10 @@ import requests
 import csv
 import pandas as pd
 import os
+from dotenv import load_dotenv
+#import hero_selection 
+
+
 
 def comp_creator(comp, writer):
     current_url = comp[0]
@@ -65,6 +69,8 @@ def comp_parser():
 
    
 def get_minions():
+
+    load_dotenv()
     # Your Blizzard API credentials
     client_id = os.getenv('HS_CLIENT_ID')
     client_secret = os.getenv('HS_CLIENT_SECRET')
@@ -97,20 +103,17 @@ def get_minions():
     if response.status_code == 200:
         minions = response.json()
         for minion in minions['cards']:
-            print(f"Name: {minion['name']}, Type: {minion['type']}")
+            print(f"Name: {minion}")
     else:
         print(f"Failed to retrieve minions: {response.status_code}")
 
 
-def hero_parser():
-    data = pd.read_csv('data/hero_tierlist.csv', dtype=str)
-    hero_dict = data.set_index('hero_name')['tier'].to_dict() 
-    return hero_dict    
+ 
     
 
 def main():
     #hero_parser()
-    #comp_parser()
-    get_minions()
+    comp_parser()
+    #get_minions()
 
 main()
