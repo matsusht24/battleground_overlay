@@ -4,7 +4,7 @@ import csv
 import pandas as pd
 import os
 from dotenv import load_dotenv
-#import hero_selection 
+import hero_selection
 
 
 
@@ -112,8 +112,15 @@ def get_minions():
     
 
 def main():
-    #hero_parser()
-    comp_parser()
+    hero_dict = hero_selection.hero_parser()
+    #test case
+    #returns Chenvaala
+    test_case_0 = ['Varden Dawngrasp','Chenvaala', 'Tickatus', 'Onyxia']
+
+    #returns Varden Dawngrasp/Queen Wagtoggle
+    test_case_1 = ['Varden Dawngrasp','Queen Wagtoggle', 'Tickatus', 'Onyxia']
+    print(hero_selection.get_best_hero(hero_list=hero_dict, hero_options=test_case_1))
+    #comp_parser()
     #get_minions()
 
 main()

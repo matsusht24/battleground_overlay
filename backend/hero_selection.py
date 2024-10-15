@@ -1,10 +1,30 @@
 import os
 import pandas as pd
 
-def get_best_hero(hero_list, hero_options, types_in_game):
-    # Placeholder logic for selecting the best hero
+def get_best_hero(hero_list, hero_options):
     
-    best_hero = max(hero_list, key=lambda hero: hero["tier"])
+   
+    # Define the tier ranking
+    tier_ranking = {
+        'S': 5,
+        'A': 4,
+        'B': 3,
+        'C': 2,
+        'D': 1,
+        'F': 0
+    }
+    best_hero = '' 
+    highTier = 0
+    best_heroes = []
+    for hero in hero_options:
+        tmpTier =  tier_ranking[hero_list[hero]] 
+        if tmpTier == highTier:
+            best_heroes.append(hero)
+        if tmpTier > highTier:
+            highTier = tmpTier
+            best_heroes = [hero]
+        
+    best_hero = '/'.join(best_heroes)
     return best_hero
 
 def hero_parser():
@@ -13,7 +33,3 @@ def hero_parser():
     return hero_dict   
 
 
-#test case
-hero_1, hero_2, hero_3, hero_4 = input()
-hero_list = hero_parser()
-print(get_best_hero(hero_list, [hero_1, hero_2, hero_3, hero_4], ["type1", "type2"]))
