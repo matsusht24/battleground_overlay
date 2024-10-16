@@ -5,7 +5,7 @@ import pandas as pd
 import os
 from dotenv import load_dotenv
 import hero_selection
-
+import trinket_selection
 
 
 def comp_creator(comp, writer):
@@ -30,7 +30,7 @@ def comp_creator(comp, writer):
     writer.writerow([comp_name,enabelers, when_to_commit])
     #core and add ons will be harder to do as the images don't have a good label on them
     
-def comp_parser():
+def update_comp_list():
     comps_url = "https://hsbgguide.com/comps/"
     response = requests.get(comps_url)
     file_name = 'data/comp_tierlist.csv'
@@ -51,10 +51,9 @@ def comp_parser():
 
     # open/creates the csv file that will store the data on the comps for now
     try:
-        file = open(file_name, mode='a+', newline='\n')
+        file = open(file_name, mode='w', newline='\n')
         writer = csv.writer(file)
-        if not file_exists:
-            writer.writerow(['comp_name','enablers','when_to_commit','core','add-ons'])
+        writer.writerow(['comp_name','enablers','when_to_commit','core','add-ons'])
     except FileNotFoundError:
         print(f"Error: The file '{file_name}' could not be found.")
     except PermissionError:
@@ -112,15 +111,27 @@ def get_minions():
     
 
 def main():
-    hero_dict = hero_selection.hero_parser()
-    #test case
-    #returns Chenvaala
-    test_case_0 = ['Varden Dawngrasp','Chenvaala', 'Tickatus', 'Onyxia']
 
-    #returns Varden Dawngrasp/Queen Wagtoggle
-    test_case_1 = ['Varden Dawngrasp','Queen Wagtoggle', 'Tickatus', 'Onyxia']
-    print(hero_selection.get_best_hero(hero_list=hero_dict, hero_options=test_case_1))
-    #comp_parser()
+    print('')
+
+   #####################################################################################
+    #test cases for hero_parser
+    # hero_dict = hero_selection.hero_parser()
+    # returns Chenvaala
+    # test_case_0 = ['Varden Dawngrasp','Chenvaala', 'Tickatus', 'Onyxia']
+
+    # print(hero_selection.get_best_hero(hero_list=hero_dict, hero_options=test_case_0))
+
+    # #returns Varden Dawngrasp/Queen Wagtoggle
+    # test_case_1 = ['Varden Dawngrasp','Queen Wagtoggle', 'Tickatus', 'Onyxia']
+    
+    # print(hero_selection.get_best_hero(hero_list=hero_dict, hero_options=test_case_1))
+
+    ######################################################################################
+
+    
+    # trinket_selection.update_trinket_list()
+    # update_comp_list()
     #get_minions()
 
 main()
