@@ -32,10 +32,8 @@ def get_best_trinket(trinket_list, trinket_options,  types_in_game):
 
 def trinket_parser():
     data = pd.read_csv('data/trinket_tierlist.csv', dtype=str)
-    #print(data.columns)
-    #trinket_dict = data.set_index('Name')['Tier'].to_dict() 
-    #print(trinket_dict)
-    return 'trinket_dict  '
+    trinket_dict = data.set_index('Name')['Tier'].to_dict() 
+    return trinket_dict
 
 
 # updates trinket_tierlist.csv with new info from hsbgguide/tierlist
