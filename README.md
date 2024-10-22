@@ -9,8 +9,8 @@ This is an Electron.js-based overlay that helps you play Hearthstone Battlegroun
 - Comp selection based on game state and synergies
 
 ## Technology Stack
-- **Frontend**: HTML, CSS, JavaScript (Electron.js)
-- **Backend**: Python for data processing and WebSocket communication
+- **Frontend**: HTML, CSS, JavaScript (React.js)
+- **Backend**: Python (Flask)
 
 ## Setup
 
