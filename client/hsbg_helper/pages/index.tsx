@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 
-function index() {
+
+function Index() {
   const [message, setMessage] = useState("Loading");
   useEffect(() => {
     fetch("http://localhost:8080/api/home").then(
@@ -18,4 +19,4 @@ function index() {
   )
 }
 
-export default index;
+export default Index;
