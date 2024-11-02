@@ -14,6 +14,7 @@ export default function SearchBar({ onHeroSelect}:{ onHeroSelect: (hero:string)=
   const handleSelectHero = (hero: string) => {
     setInputValue(hero);
     onHeroSelect(hero);  // Call the parent component function
+    
   };
 
   return (
