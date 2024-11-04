@@ -1,11 +1,15 @@
 import { HtmlContext } from 'next/dist/server/route-modules/pages/vendored/contexts/entrypoints';
-import { useState, ChangeEvent} from 'react';
+import { useState, ChangeEvent, useContext} from 'react';
+import HeroCard from './hero_card';
 
-export default function SearchBar({ onHeroSelect}:{ onHeroSelect: (hero:string)=>void}) {
+export default function SearchBar({ onHeroSelect}:{ onHeroSelect: (hero:string)=>void}, heroData: Record<string,string>) {
   const [inputValue, setInputValue] = useState('');
-  
   // Example hero names array
-  const heroes = ['A. F. Kay', 'Al\'Akir', 'Alexstrasza', 'Ambassador Faelin'];
+  const heroes = ({ heroData }: Record<string, string>) => {
+    if (!heroData) {
+      return <div>No heroes found.</div>;
+    }
+  
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);

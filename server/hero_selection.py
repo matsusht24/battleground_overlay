@@ -34,7 +34,7 @@ def hero_parser():
     hero_dict = data.set_index('hero_name')['tier'].to_dict() 
     return hero_dict   
 
-def hero_image_parser():
+#def hero_image_parser():
     url = "https://hearthstone.blizzard.com/en-us/battlegrounds?bgCardType=hero"
     response = requests.get(url)
     img_folder_path = '../client/hsbg_helper/public/'
@@ -69,4 +69,4 @@ def hero_image_parser():
 
         print(f"{img_name} downloaded.")
 
-hero_image_parser()
+#hero_image_parser()
