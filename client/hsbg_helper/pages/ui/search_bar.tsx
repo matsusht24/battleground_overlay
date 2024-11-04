@@ -2,26 +2,35 @@ import { HtmlContext } from 'next/dist/server/route-modules/pages/vendored/conte
 import { useState, ChangeEvent, useEffect} from 'react';
 import HeroCard from './hero_card';
 
-export default function SearchBar({ onHeroSelect}:{ onHeroSelect: (hero:string)=>void}, heroData: Record<string,string>) {
+type SearchBarProps = {
+  onHeroSelect: (hero:string)=>void,
+  heroData: Record<string,string>
+};
+
+export default function SearchBar({ onHeroSelect, heroData}: SearchBarProps) {
   const [inputValue, setInputValue] = useState('');
-  const [heroes, setHeroes] = useState(['']);
+  const [filteredSuggestions, setFilteredSuggestions] = useState(['']);
 
-
-  // Example hero names array
-  useEffect(() => {
-    if(heroData){
-      console.log(heroData);
-      setHeroes(Object.keys(heroData));
-    }
-
-  }, [heroData])
+  const heroes = Object.keys(heroData);
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
+    const value = event.target.value;
+    setInputValue(value);  
+    if (value.length > 0) {
+      const filtered = heroes.filter((heroes) =>
+        heroes.toLowerCase().startsWith(value.toLowerCase())
+      );
+      setFilteredSuggestions(filtered);
+    } else {
+      setFilteredSuggestions([]); // Hide suggestions if input is empty
+    }
+    };
+
+ 
 
   const handleSelectHero = (hero: string) => {
     setInputValue(hero);
     onHeroSelect(hero);  // Call the parent component function
+    setFilteredSuggestions([]);
     
   };
 
@@ -34,15 +43,15 @@ export default function SearchBar({ onHeroSelect}:{ onHeroSelect: (hero:string)=
         placeholder="Search..."
         className='w-auto pl-2'
       />
-      <ul className='pl-2'>
-        {heroes
-          .filter((hero) => hero.toLowerCase().includes(inputValue.toLowerCase()))
-          .map((hero) => (
-            <li key={hero} onClick={() => handleSelectHero(hero)}>
+     {inputValue.length > 0 && filteredSuggestions.length > 0 && (
+        <ul className="suggestions-list pl-2">
+          {filteredSuggestions.map((hero, index) => (
+            <li key={index} className="suggestion-item" onClick={() => handleSelectHero(hero)}>
               {hero}
             </li>
           ))}
-      </ul>
+        </ul>
+      )}
     </div>
   );
 }
