@@ -6,15 +6,17 @@ import { fetchHeroes } from '../api/hello';
 const compareTiers = (heroes: Array<string>, heroData: Record<string,string>) => {
   const tierOrder = { S: 1, A: 2, B: 3, C: 4, D: 5, F: 6 };
   let bestHero = '';
+  let curTier = 'F';
 
   heroes.forEach((hero) => {
     if (
       !bestHero ||
-      tierOrder[heroData[hero]] < tierOrder[heroData[bestHero]]
+      tierOrder[heroData[hero]] < tierOrder[curTier]
     ) {
       bestHero = hero;
+      curTier = heroData[hero];
     } else if (!bestHero ||
-      tierOrder[heroData[hero]] == tierOrder[heroData[bestHero]]){
+      tierOrder[heroData[hero]] == tierOrder[curTier]){
         bestHero = bestHero+" / "+hero;
       }
   });
