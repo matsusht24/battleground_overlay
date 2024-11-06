@@ -33,11 +33,15 @@ def get_best_trinket(trinket_list, trinket_options,  types_in_game):
     best_trinket = '/'.join(best_heroes)
     return best_trinket
 
-def trinket_parser():
-    data = pd.read_csv('data/trinket_tierlist.csv', dtype=str)
+def lesser_trinket_parser():
+    data = pd.read_csv('data/lesser_trinket_tierlist.csv', dtype=str)
     trinket_dict = data.set_index('Name')['Tier'].to_dict() 
     return trinket_dict
 
+def greater_trinket_parser():
+    data = pd.read_csv('data/greater_trinket_tierlist.csv', dtype=str)
+    trinket_dict = data.set_index('Name')['Tier'].to_dict() 
+    return trinket_dict
 
 # updates trinket_tierlist.csv with new info from hsreplay.net/battlgrounds/trinkets
 def update_trinket_list(greater):
@@ -94,7 +98,7 @@ def update_trinket_list(greater):
             sub_div1 = trinket_div.find("div", class_="sc-jMScns") if trinket_div else None
             class_text = sub_div1.get_text(strip=True) if sub_div1 else ""
 
-            trinket_name = f'{main_text}: {class_text}'
+            trinket_name = f'{main_text}: {class_text}' if class_text else main_text
             
             writer.writerow([curTier, trinket_name, img_src])
             
@@ -129,7 +133,7 @@ def download_trinket_imgs():
         response = requests.get(img_url, stream=True)
         if response.status_code == 200:
             # Extract the image name from the URL
-            img_name =  f'{trinket_name}_Portrait.jpg'
+            img_name =  f'{trinket_name}.jpg'
             # Define the path where the image will be saved
             img_path = os.path.join(folder_path, img_name)
  
@@ -144,6 +148,6 @@ def download_trinket_imgs():
         else:
             print(f"Failed to download the image: {img_name}")
         
-#update_trinket_list(True)
+#update_trinket_list(False)
 
-download_trinket_imgs()
+#download_trinket_imgs()
