@@ -1,21 +1,19 @@
 import React, {useEffect, useState} from 'react'
-
+import Header from './ui/header';
+import Home_Cards from './ui/Home_Cards';
 
 function Index() {
-  const [message, setMessage] = useState("Loading");
-  useEffect(() => {
-    fetch("http://localhost:8080/api/home").then(
-      response => response.json()
-
-    ).then(
-      data => {
-        setMessage(data.message);
-      }
-    );
-  }, []);
   return (
 
-    <div>{message}</div>
+    <div>
+      <Header header_name=''/>
+      <div className='flex justify-between'>
+          <Home_Cards topic='Hero'/>
+          <Home_Cards topic='Lesser'/>
+          <Home_Cards topic='Greater'/>
+          <Home_Cards topic='Composition'/>
+      </div>
+    </div>
   )
 }
 

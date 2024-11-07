@@ -2,6 +2,7 @@ import React, {useEffect, useState, createContext, Suspense} from 'react'
 import TrinketCard from '../ui/trinket_card'
 import { useQuery } from '@tanstack/react-query';
 import { fetchLesserTrinkets } from '../api/hello';
+import Header from '../ui/header';
 
 const compareTiers = (trinketes: Array<string>, trinketData: Record<string,string>) => {
   const tierOrder = { S: 1, A: 2, B: 3, C: 4, D: 5, F: 6 };
@@ -55,8 +56,8 @@ function Page() {
   const bestTrinket = compareTiers(Object.values(selectedTrinkets).filter(Boolean),data.trinketData);
   
   return (
-        <main className='m-10'>
-          <header className='text-center font-bold text-4xl p-12'>Lesser Trinket Selection</header>
+        <div>
+          <Header header_name='Lesser Trinket Selection' />
           <div className='flex justify-between'>
     
           {[1, 2, 3, 4].map((pos) => (
@@ -70,7 +71,7 @@ function Page() {
             
           </div>  
           {bestTrinket && <h2>Best trinket: {bestTrinket}</h2>}
-        </main>
+        </div>
         
   )
 }
