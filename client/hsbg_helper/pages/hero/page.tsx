@@ -3,6 +3,7 @@ import HeroCard from '../ui/hero_card'
 import { useQuery } from '@tanstack/react-query';
 import { fetchHeroes } from '../api/hello';
 import Header from '../ui/header';
+import NextButton from '../ui/NextButton';
 
 const compareTiers = (heroes: Array<string>, heroData: Record<string,string>) => {
   const tierOrder = { S: 1, A: 2, B: 3, C: 4, D: 5, F: 6 };
@@ -72,6 +73,7 @@ function Page() {
             
           </div>  
           {bestHero && <h2>Best Hero: {bestHero}</h2>}
+        <NextButton next_link='/trinket/lesser'/>
         </div>
   )
 }

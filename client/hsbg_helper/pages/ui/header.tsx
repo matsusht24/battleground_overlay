@@ -13,6 +13,7 @@ function Header({header_name}: HeaderProps) {
             <Nav_bar/>
         </div>
         {header_name && <header className='text-center font-bold text-3xl pb-8'>{header_name}</header>}
+        
     </div>
     
   )

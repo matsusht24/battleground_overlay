@@ -3,6 +3,7 @@ import TrinketCard from '../ui/trinket_card'
 import { useQuery } from '@tanstack/react-query';
 import { fetchGreaterTrinkets } from '../api/hello';
 import Header from '../ui/header';
+import NextButton from '../ui/NextButton';
 
 const compareTiers = (trinketes: Array<string>, trinketData: Record<string,string>) => {
   const tierOrder = { S: 1, A: 2, B: 3, C: 4, D: 5, F: 6 };
@@ -71,6 +72,7 @@ function Page() {
             
           </div>  
           {bestTrinket && <h2>Best trinket: {bestTrinket}</h2>}
+          <NextButton next_link='/comp/page'/>
         </div>
         
   )
