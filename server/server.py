@@ -2,6 +2,7 @@ from flask import Flask, jsonify
 from flask_cors import CORS
 import hero_selection
 import trinket_selection
+from flask_frozen import Freezer
 
 #app instance
 app = Flask(__name__)
