@@ -24,7 +24,10 @@ type TrinketCardProps = {
 
   return (
     <div className='flex-col justify-center'>
-      <strong className='text-center text-xl'>{"Trinket #" + position}</strong>
+      <div className='w-full flex justify-center items-center'>
+        <strong className='text-center text-xl'>{"Trinket #" + position}</strong>
+      </div>
+      
        
        
        <div>

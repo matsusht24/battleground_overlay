@@ -19,6 +19,7 @@ export default function SearchBar({ onHeroSelect, heroData}: SearchBarProps) {
       const filtered = heroes.filter((heroes) =>
         heroes.toLowerCase().startsWith(value.toLowerCase())
       );
+      setActiveIndex(0);
       setFilteredSuggestions(filtered);
     } else {
       setFilteredSuggestions([]); // Hide suggestions if input is empty
@@ -43,7 +44,7 @@ export default function SearchBar({ onHeroSelect, heroData}: SearchBarProps) {
           setFilteredSuggestions([]);
           setActiveIndex(-1); // Reset index after selection
           onHeroSelect(filteredSuggestions[activeIndex]); 
-        }
+        } 
       }
     };
   

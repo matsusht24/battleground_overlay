@@ -16,15 +16,18 @@ type HeroCardProps = {
   const [heroName, setHeroName] = useState("A_F_KAY")
   const [tier, setTier] = useState("F");
   const handleHeroSelect = (selectedHero: string) => {
-    const formattedHeroName = selectedHero.replace(/[\s'.]+/g, '_');
+    const formattedHeroName = selectedHero.replace(/[\s',.]+/g, '_');
     setHeroName(formattedHeroName);
     setTier(heroData[selectedHero]);
     onSelect(selectedHero);
   };
 
   return (
-    <div className='flex-col justify-center'>
-      <strong className='text-center text-xl'>{"Hero #" + position}</strong>
+    <div className='flex-col justify-center items-center'>
+      <div className='w-full flex justify-center items-center'>
+        <strong className='text-xl text-center'>{"Hero #" + position}</strong>
+      </div>
+      
        
        
        <div>
