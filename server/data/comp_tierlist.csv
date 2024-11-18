@@ -1,11 +1,8 @@
 comp_name,enablers,when_to_commit,core,add-ons
-Demons – Self Damage,Trinket: Rewinder Portrait,Soul Rewinder + Tichondrius + Malchezaar
+Nalaa Menagerie,Trinket: Nalaa Portrait,Nalaa + Spell Generation
 Mechs – Magnetics,Scrap ScraperScavenge for Parts,Utility Drone + Magnetic Generation (Scrap Scaper/Scavenge For Parts)
 APM Elementals/Pirates,Elise and/or Wraith and/or Brann,Econ Generator (Tethys/Brann/Wraith) + Scaling (Rock rock/Trinket)
-Dragons – Start of Combat,,Tarec/Poet + Combat Scaling
-Goldrinn Beasts,,Goldrinn + Beast SummonsTrinket: Slamma Sticker
 Murlocs,Brann + Trinket: Nerglish Phrasebook,Brann + Mrglin Burglar
-Nalaa Menagerie,Trinket: Nalaa Portrait,Nalaa + Spell Generation
 Quilboars – End of Turn,"Gem Scaling (Piper/Jazzer, Trinket)",Murkeye + Jazzer/Smuggler
 Undead – Overflow,Cadaver Caretaker,Catacomb Crasher + Cadaver Caretaker
 Poison Scam,"
@@ -17,6 +14,10 @@ Poison Scam,"
 
 ",When you have no future or are clearly getting outstatted
 Demons – Shop Buff,Felbat Portrait,"Buffed Shop + Shop Consume (Urzul, Felbat)"
+Theotar,,Double Theotar
+Dragons – Start of Combat,,Tarec/Poet + Combat Scaling
+Goldrinn Beasts,,Goldrinn + Beast SummonsTrinket: Slamma Sticker
+Demons – Self Damage,Trinket: Rewinder Portrait,Soul Rewinder + Tichondrius + Malchezaar
 Undead – Attack Scaling,Handless/Bonehead -> Anuburak,Anuburak + Baron
 Dragons – Kalecgos,,Kalecgos + Brann
 Mechs – Automaton,,"Automaton + Reborn/Kangors/Trinket (Karazhan’s Chess Set, Automaton Portrait)"

@@ -68,17 +68,8 @@ def comp_creator(comp, writer):
     #core and add ons will be harder to do as the images don't have a good label on them
     
 
-   #####################################################################################
-    #test cases for hero_parser
-    # hero_dict = hero_selection.hero_parser()
-    # returns Chenvaala
-    # test_case_0 = ['Varden Dawngrasp','Chenvaala', 'Tickatus', 'Onyxia']
+#####################################################################################
+#test cases for comp parser
 
-    # print(hero_selection.get_best_hero(hero_list=hero_dict, hero_options=test_case_0))
-
-    # #returns Varden Dawngrasp/Queen Wagtoggle
-    # test_case_1 = ['Varden Dawngrasp','Queen Wagtoggle', 'Tickatus', 'Onyxia']
-    
-    # print(hero_selection.get_best_hero(hero_list=hero_dict, hero_options=test_case_1))
-
-    ######################################################################################
+update_comp_list()
+######################################################################################
