@@ -30,15 +30,14 @@ type TrinketCardProps = {
       
        
        
-       <div>
+       <div className="pl-3 pr-3">
         <Image src={`/trinket_portraits/${trinketName}.jpg`}
             width={350}
             height={371}
             alt="trinket portrait" />
         <Tier tier={tier}/>
-       </div>
-        <div><SearchBar onHeroSelect={handleTrinketSelect} heroData={trinketData}/></div>
-      
+        <SearchBar onHeroSelect={handleTrinketSelect} heroData={trinketData}/>
+       </div>      
     </div>
    
    

@@ -30,14 +30,15 @@ type HeroCardProps = {
       
        
        
-       <div>
+       <div className='pl-3 pr-3'>
         <Image src={`/hero_portraits/${heroName}_Portrait.png`}
-            width={350}
-            height={371}
+            width={300}
+            height={250}
             alt="hero portrait" />
         <Tier tier={tier}/>
+        <SearchBar onHeroSelect={handleHeroSelect} heroData={heroData}/>
        </div>
-        <div><SearchBar onHeroSelect={handleHeroSelect} heroData={heroData}/></div>
+        
       
     </div>
    
